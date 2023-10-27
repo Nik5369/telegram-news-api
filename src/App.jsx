@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import './App.css'
 import { SignIn } from './components/SignIn'
@@ -10,12 +10,20 @@ function App() {
   const [identified, setIdentified] = useState(false)
   const [user, setUser] = useState({})
   const [userFind, setUserFind] = useState(false)
+  const [createArticle, setCreateArticle] = useState(false)
+  const [articleList, setArticleList] = useState([])
+
+  const getPageList = async (token) => {
+    return await Telegraph.getPageList(token)
+  }
 
   const getUser = async (token) => {
     const response = await Telegraph.singIn(token)
     if (response.ok) {
       setUser({ ...response.result, token: token })
       setIdentified(true)
+      const pageResponse = await getPageList(token)
+      setArticleList([...pageResponse.result.pages])
     } else {
       setUserFind(true)
     }
@@ -29,9 +37,21 @@ function App() {
       author_name,
     }
     const response = await Telegraph.postPage(allArticleValues)
-    console.log(response)
+    setCreateArticle(response.ok)
   }
 
+  useEffect( () => {
+    if(createArticle){
+       
+      const newArticleListCreate = async () =>{
+        const pageResponse = await getPageList(user.token)
+        setArticleList( [...pageResponse.result.pages])
+      }
+      newArticleListCreate()
+      setCreateArticle(false)
+    }
+  },[createArticle])
+ 
   return (
     <div className="app">
       {!identified ? (
@@ -41,7 +61,7 @@ function App() {
         />
       ) : (
         <div className="app-cont">
-          <ArticleList postArticle={postArticle} />
+          <ArticleList articleList={articleList} postArticle={postArticle} />
           <UserProfile user={user} />
         </div>
       )}

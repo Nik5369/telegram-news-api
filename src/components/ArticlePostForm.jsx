@@ -7,7 +7,7 @@ export const ArticlePostForm = ({ postArticle }) => {
     title: '',
     descr: '',
   })
-
+ 
   const postArticleValuesFunc = (e) => {
     e.preventDefault()
     postArticle(postArticleValues)

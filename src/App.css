@@ -32,8 +32,18 @@
   grid-gap: 5%;
   margin: 0 auto;
 }
+.post-article-form{
+  margin-bottom: 40px;
+}
 .post-article-form form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+.article-item{
+  width: 100%;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  margin-bottom: 20px;
 }

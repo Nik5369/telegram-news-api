@@ -18,25 +18,35 @@ export default class Telegraph {
     }
   }
   static async postPage(values) {
-    console.log(values)
+ 
+
     try {
       const response = await axios.get('https://api.telegra.ph/createPage', {
         params: {
           access_token: values.token,
           title: values.title,
           author_name: values.author_name,
-          content: [{ tag: 'p', children: ['Hello, world!'] }],
-          return_content: true,
+          content:`[{"tag":"p","children":["${values.descr}"]}]`,
+          return_content: false,
         },
-        // mode: 'no-cors',
-        // headers: {
-        //   'Access-Control-Allow-Origin': 'http://localhost:5173/',
-        //   'Content-Type': 'json',
-        // },
-        // withCredentials: true,
-        // credentials: 'same-origin',
+
       })
-      return response
+      return response.data
+    } catch (e) {
+      throw e
+    }
+  }
+  static async getPageList(token) {
+    try {
+      const response = await axios.get(
+        'https://api.telegra.ph/getPageList',
+        {
+          params: {
+            access_token: token,
+          },
+        }
+      )
+      return response.data
     } catch (e) {
       throw e
     }
