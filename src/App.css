@@ -3,7 +3,7 @@
   height: 100%;
   margin-top: 50px;
 }
-.sign-in-cont {
+/* .back-for-form {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@
   align-items: center;
   background: #0000005e;
 }
-.sign-in-cont form {
+.back-for-form form {
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
   max-width: 800px;
   width: 100%;
   gap: 20px;
-}
+} */
 .app-cont {
   width: 90%;
   display: grid;
@@ -46,4 +46,21 @@
   border-radius: 10px;
   border: 1px solid #000;
   margin-bottom: 20px;
+}
+.user-text-string{
+  padding: 10px 0;
+  border-bottom: 1px solid #000;
+}
+.user-text-string-title{
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.user-text-string-value{
+  padding-left: 50px;
+
+}
+.change-user-info-btn{
+  display: flex;
+  justify-content: end;
 }

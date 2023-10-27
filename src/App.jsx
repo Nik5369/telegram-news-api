@@ -5,6 +5,7 @@ import { SignIn } from './components/SignIn'
 import Telegraph from './API/Telegraph'
 import { UserProfile } from './components/UserProfile'
 import { ArticleList } from './components/ArticleList'
+import { ChangeUserInfo } from './components/ChangeUserInfo'
 
 function App() {
   const [identified, setIdentified] = useState(false)
@@ -12,6 +13,7 @@ function App() {
   const [userFind, setUserFind] = useState(false)
   const [createArticle, setCreateArticle] = useState(false)
   const [articleList, setArticleList] = useState([])
+  const [changeUserInfoModal, setChangeUserInfoModal] = useState(false)
 
   const getPageList = async (token) => {
     return await Telegraph.getPageList(token)
@@ -40,6 +42,22 @@ function App() {
     setCreateArticle(response.ok)
   }
 
+  const getNewUserInfo = async (newUserInfo) => {
+
+    const token = user.token
+    const newUserInfoToken = {
+      token,
+      ...newUserInfo,
+    }
+    const responseData = await Telegraph.newUserIngo(newUserInfoToken)
+    if(responseData.ok){
+      const response = responseData.result
+      console.log(responseData.ok)
+      setUser({...user, short_name: response.short_name, author_name:  response.author_name, author_url: response.author_url })
+      setCreateArticle(responseData.ok)
+    }
+  }
+
   useEffect( () => {
     if(createArticle){
        
@@ -56,15 +74,17 @@ function App() {
     <div className="app">
       {!identified ? (
         <SignIn
+          active={!identified}
           getUser={getUser}
           notFound={userFind && 'Пользователь не найден'}
         />
       ) : (
         <div className="app-cont">
           <ArticleList articleList={articleList} postArticle={postArticle} />
-          <UserProfile user={user} />
+          <UserProfile user={user} setChangeUserInfoModal={setChangeUserInfoModal} />
         </div>
       )}
+      <ChangeUserInfo setChangeUserInfoModal={setChangeUserInfoModal} getNewUserInfo={getNewUserInfo} active={changeUserInfoModal} setActive={setChangeUserInfoModal}/>
     </div>
   )
 }

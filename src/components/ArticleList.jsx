@@ -8,7 +8,7 @@ export const ArticleList = ({ postArticle, articleList }) => {
       <ArticlePostForm  postArticle={postArticle} />
     
       <div className="">
-
+      {console.log('fasfsafsa')}
       {articleList.map(el => {
         return <Article key={uuidv4()} item={{...el}} />
       })}

@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { MyButton } from './UI/button/MyButton'
 import { MyInput } from './UI/input/MyInput'
+import { MyForm } from './UI/form/MyForm'
 
-export const SignIn = ({ getUser, notFound }) => {
+export const SignIn = ({ getUser, notFound,active}) => {
   const [inputValue, setInputValue] = useState('')
 
   const getValue = (e) => {
@@ -11,9 +12,9 @@ export const SignIn = ({ getUser, notFound }) => {
   }
 
   return (
-    <div className="sign-in-cont">
-      <form onSubmit={getValue}>
-        <MyInput
+ 
+    <MyForm onSubmit={getValue} active={active}>
+      <MyInput
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           type="text"
@@ -21,7 +22,6 @@ export const SignIn = ({ getUser, notFound }) => {
         />
         {notFound && <div>{notFound}</div>}
         <MyButton>Отправить</MyButton>
-      </form>
-    </div>
+    </MyForm>
   )
 }
