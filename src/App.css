@@ -1,0 +1,39 @@
+.app {
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+}
+.sign-in-cont {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0000005e;
+}
+.sign-in-cont form {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  align-items: center;
+  padding: 30px 25px;
+  max-width: 800px;
+  width: 100%;
+  gap: 20px;
+}
+.app-cont {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 60% 35%;
+  grid-gap: 5%;
+  margin: 0 auto;
+}
+.post-article-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
