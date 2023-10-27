@@ -1,4 +1,5 @@
 import axios from 'axios'
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8'
 
 export default class Telegraph {
   static async singIn(token) {
@@ -27,13 +28,13 @@ export default class Telegraph {
           content: [{ tag: 'p', children: ['Hello, world!'] }],
           return_content: true,
         },
-        mode: 'no-cors',
-        headers: {
-          'Access-Control-Allow-Origin': 'http://localhost:5173/',
-          'Content-Type': 'json',
-        },
-        withCredentials: true,
-        credentials: 'same-origin',
+        // mode: 'no-cors',
+        // headers: {
+        //   'Access-Control-Allow-Origin': 'http://localhost:5173/',
+        //   'Content-Type': 'json',
+        // },
+        // withCredentials: true,
+        // credentials: 'same-origin',
       })
       return response
     } catch (e) {
