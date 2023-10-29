@@ -18,18 +18,15 @@ export default class Telegraph {
     }
   }
   static async postPage(values) {
- 
-
     try {
       const response = await axios.get('https://api.telegra.ph/createPage', {
         params: {
           access_token: values.token,
           title: values.title,
           author_name: values.author_name,
-          content:`[{"tag":"p","children":["${values.descr}"]}]`,
+          content: `[{"tag":"p","children":["${values.descr}"]}]`,
           return_content: false,
         },
-
       })
       return response.data
     } catch (e) {
@@ -38,20 +35,17 @@ export default class Telegraph {
   }
   static async getPageList(token) {
     try {
-      const response = await axios.get(
-        'https://api.telegra.ph/getPageList',
-        {
-          params: {
-            access_token: token,
-          },
-        }
-      )
+      const response = await axios.get('https://api.telegra.ph/getPageList', {
+        params: {
+          access_token: token,
+        },
+      })
       return response.data
     } catch (e) {
       throw e
     }
   }
-  static async newUserIngo(newUserInfoToken) {
+  static async newUserInfo(newUserInfoToken) {
     try {
       const response = await axios.get(
         'https://api.telegra.ph/editAccountInfo',
@@ -60,7 +54,10 @@ export default class Telegraph {
             access_token: newUserInfoToken.token,
             short_name: newUserInfoToken.short_name,
             author_name: newUserInfoToken.author_name,
-            author_url: newUserInfoToken.author_url,
+            author_url:
+              newUserInfoToken.author_url.slice(0, 4) === 'http'
+                ? newUserInfoToken.author_url
+                : 'https://t.me/' + newUserInfoToken.author_url,
           },
         }
       )

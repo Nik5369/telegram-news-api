@@ -1,16 +1,21 @@
 import { useState } from 'react'
 import { MyInput } from './UI/input/MyInput'
 import { MyButton } from './UI/button/MyButton'
+import { useDispatch, useSelector } from 'react-redux'
+import { getNewArticle } from '../features/UserSlice'
 
-export const ArticlePostForm = ({ postArticle }) => {
+export const ArticlePostForm = () => {
+  const dispatch = useDispatch()
+  const { userValues } = useSelector((state) => state.user)
   const [postArticleValues, setPostArticleValues] = useState({
     title: '',
     descr: '',
   })
- 
+
   const postArticleValuesFunc = (e) => {
     e.preventDefault()
-    postArticle(postArticleValues)
+    const { token, author_name, ...anyValues } = userValues
+    dispatch(getNewArticle({ ...postArticleValues, token, author_name }))
   }
 
   return (
