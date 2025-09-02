@@ -13,7 +13,6 @@ const initialState: userSchema = {
   },
   userIsLoading: false,
   identified: false,
-  userFind: false,
   userModal: false,
 }
 
@@ -34,8 +33,6 @@ const userSlice = createSlice({
       if (payload) {
         state.userValues = payload
         state.identified = true
-      } else {
-        state.userFind = true
       }
       state.userIsLoading = false
     })

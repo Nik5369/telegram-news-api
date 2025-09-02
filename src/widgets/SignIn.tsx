@@ -5,11 +5,10 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch'
 import { MyButton, MyForm, MyInput } from '@shared/ui'
 
 type TProps = {
-  notFound: boolean
   active: boolean
 }
 
-export const SignIn: FC<TProps> = ({ notFound, active }) => {
+export const SignIn: FC<TProps> = ({ active }) => {
   const dispatch = useAppDispatch()
 
   const [inputValue, setInputValue] = useState('')
@@ -23,7 +22,6 @@ export const SignIn: FC<TProps> = ({ notFound, active }) => {
   return (
     <MyForm onSubmit={getValue} active={active} canClose={false}>
       <MyInput value={inputValue} onChange={(e) => setInputValue(e.target.value)} type="text" placeholder="Введите ваш токен" />
-      {notFound && <div>{'Пользователь не найден'}</div>}
       <MyButton>Отправить</MyButton>
     </MyForm>
   )

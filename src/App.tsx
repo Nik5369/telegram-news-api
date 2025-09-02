@@ -9,24 +9,28 @@ import { ChangeUserInfo } from '@widgets/ChangeUserInfo'
 import { UserProfile } from '@widgets/UserProfile'
 import { SignIn } from '@widgets/SignIn'
 import { getUserToken } from './shared/services/localStorage/getUserToken'
+import { getUserValues, userActions } from './entities/User'
 
 function App() {
   const dispatch = useAppDispatch()
 
-  const { userFind, identified } = useAppSelector((state) => state.user)
+  const { identified } = useAppSelector((state) => state.user)
   const { createArticle } = useAppSelector((state) => state.articles)
 
   const access_token = getUserToken()
 
   useEffect(() => {
-    if (identified && access_token) {
-      dispatch(getArticles(access_token))
+    if (access_token) {
+      dispatch(getUserValues(access_token))
+      if (identified) {
+        dispatch(getArticles(access_token))
+      }
     }
   }, [identified, createArticle])
 
   return (
     <div className="app">
-      {!identified && <SignIn active={!identified} notFound={userFind} />}
+      {!identified && <SignIn active={!identified} />}
       <div className="app-cont">
         <ArticleList />
         <UserProfile />

@@ -4,6 +4,5 @@ export type userSchema = {
   userValues: TUser
   userIsLoading: boolean
   identified: boolean
-  userFind: boolean
   userModal: boolean
 }
