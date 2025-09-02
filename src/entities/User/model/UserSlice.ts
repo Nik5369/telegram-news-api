@@ -1,12 +1,9 @@
 import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit'
 import { getUserValues } from './asyncThunks/getUsersValue'
-import { getArticles } from './asyncThunks/getArticles'
 import { updateUserInfo } from './asyncThunks/updateUserInfo'
-import { createArticle } from './asyncThunks/createArticle'
 import type { userSchema } from './types/userSchema'
 import { setUserToken } from '@/shared/services/localStorage/setUserToken'
 import type { TUser } from './types/user'
-import type { TArticlesListWithCount } from './types/article'
 
 const initialState: userSchema = {
   userValues: {
@@ -14,12 +11,9 @@ const initialState: userSchema = {
     author_name: '',
     author_url: '',
   },
-  articles: [],
   userIsLoading: false,
-  articlesIsLoading: false,
   identified: false,
   userFind: false,
-  createArticle: false,
   userModal: false,
 }
 
@@ -48,24 +42,6 @@ const userSlice = createSlice({
 
     builder.addCase(getUserValues.rejected, (state) => {
       state.userIsLoading = false
-    })
-
-    builder.addCase(getArticles.pending, (state) => {
-      state.articlesIsLoading = true
-    })
-
-    builder.addCase(getArticles.fulfilled, (state, { payload }: PayloadAction<TArticlesListWithCount>) => {
-      state.articles = [...payload.pages]
-      state.createArticle = false
-      state.articlesIsLoading = false
-    })
-
-    builder.addCase(getArticles.rejected, (state) => {
-      state.articlesIsLoading = false
-    })
-
-    builder.addCase(createArticle.fulfilled, (state) => {
-      state.createArticle = true
     })
 
     builder.addCase(updateUserInfo.pending, (state) => {

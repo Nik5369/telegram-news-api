@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
-import { getArticles } from '@entities/User/model/asyncThunks/getArticles'
+import { getArticles } from '@entities/Articles/model/asyncThunks/getArticles'
 import { useAppDispatch } from './shared/hooks/useAppDispatch'
 import { useAppSelector } from './shared/hooks/useAppSelector'
 import { ArticleList } from '@widgets/ArticleList'
@@ -13,7 +13,8 @@ import { getUserToken } from './shared/services/localStorage/getUserToken'
 function App() {
   const dispatch = useAppDispatch()
 
-  const { createArticle, userFind, identified } = useAppSelector((state) => state.user)
+  const { userFind, identified } = useAppSelector((state) => state.user)
+  const { createArticle } = useAppSelector((state) => state.articles)
 
   const access_token = getUserToken()
 

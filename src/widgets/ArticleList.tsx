@@ -6,7 +6,7 @@ import { Loader } from '@/shared/ui'
 import { useAppSelector } from '@/shared/hooks/useAppSelector'
 
 export const ArticleList = () => {
-  const { articles, articlesIsLoading } = useAppSelector((state) => state.user)
+  const { articles, articlesIsLoading } = useAppSelector((state) => state.articles)
 
   return (
     <div className="article-list">

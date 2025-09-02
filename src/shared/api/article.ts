@@ -1,6 +1,6 @@
 import type { AxiosResponse } from 'axios'
 import { api } from '../lib/axios/axios'
-import type { TArticleListResponse, TArticleResponse, TCreateArticle } from '@/entities/User/model/types/article'
+import type { TArticleListResponse, TArticleResponse, TCreateArticle } from '@/entities/Articles'
 
 export const postArticle = async (values: TCreateArticle) => {
   try {

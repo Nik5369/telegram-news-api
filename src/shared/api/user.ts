@@ -9,7 +9,6 @@ export const getUser = async (token: string) => {
         access_token: token,
       },
     })
-    console.log(response)
 
     return response.data
   } catch (e) {

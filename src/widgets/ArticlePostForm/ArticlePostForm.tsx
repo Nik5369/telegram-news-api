@@ -1,13 +1,13 @@
 import { useState, type ChangeEvent, type ChangeEventHandler, type FormEvent, type FormHTMLAttributes } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { createArticle } from '@/entities/User/model/asyncThunks/createArticle'
 
 import { useAppSelector } from '@shared/hooks/useAppSelector'
 import { useAppDispatch } from '@shared/hooks/useAppDispatch'
 import { MyButton, MyInput } from '@shared/ui'
 import { getUserToken } from '@shared/services/localStorage/getUserToken'
 import { convertSendedArticleText } from './services/convertSendedArticleText'
+import { createArticle } from '@entities/Articles'
 
 export const ArticlePostForm = () => {
   const dispatch = useAppDispatch()

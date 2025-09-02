@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { UserProfileString } from './UserProfileString'
 
-import { useDispatch, useSelector } from 'react-redux'
 import { userActions } from '@entities/User/model/UserSlice'
 import { useAppSelector } from '@shared/hooks/useAppSelector'
 import { MyButton } from '@shared/ui'
@@ -24,10 +23,11 @@ export const UserProfile = () => {
         </MyButton>
       </div>
       {Object.entries(userValues).map((el) => {
-        const stringName = el[0].split('_').join(' ')
-        const stringValue = el[1]
+        const fieldKey = el[0].split('_').join(' ')
+        const fieldValue = el[1]
         const key = uuidv4()
-        return <UserProfileString key={key} stringName={stringName} stringValue={stringValue} />
+
+        return <UserProfileString key={key} fieldKey={fieldKey} fieldValue={fieldValue} />
       })}
     </div>
   )
