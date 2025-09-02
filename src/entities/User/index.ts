@@ -1,6 +1,6 @@
 export { userReducer, userActions } from './model/UserSlice'
 
-export type { userSchema } from './model/types/userSChema'
+export type { userSchema } from './model/types/userSchema'
 
 export { getArticles } from './model/asyncThunks/getArticles'
 export { createArticle } from './model/asyncThunks/createArticle'
