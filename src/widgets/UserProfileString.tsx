@@ -1,9 +1,9 @@
-import type { FC } from 'react'
+import type { FC } from 'react';
 
 type TProps = {
-  fieldKey: string
-  fieldValue: string
-}
+  fieldKey: string;
+  fieldValue: string;
+};
 
 export const UserProfileString: FC<TProps> = ({ fieldKey, fieldValue }) => {
   return (
@@ -11,5 +11,5 @@ export const UserProfileString: FC<TProps> = ({ fieldKey, fieldValue }) => {
       <div className="user-text-string-title">{fieldKey}</div>
       <div className="user-text-string-value">{fieldValue}</div>
     </div>
-  )
-}
+  );
+};

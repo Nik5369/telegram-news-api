@@ -1,17 +1,17 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import type { TEditUser, TUser } from '../types/user'
-import { senNewUserInfo } from '@/shared/api'
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import type { TEditUser, TUser } from '../types/user';
+import { senNewUserInfo } from '@/shared/api';
 
 export const updateUserInfo = createAsyncThunk('user/getNewUser', async (editUserData: TEditUser) => {
   try {
-    const response = await senNewUserInfo(editUserData)
+    const response = await senNewUserInfo(editUserData);
 
     if (response.ok) {
-      return response
+      return response;
     }
 
-    throw response.error
+    throw response.error;
   } catch (error) {
-    throw Error
+    throw Error;
   }
-})
+});

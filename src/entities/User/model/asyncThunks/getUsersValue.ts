@@ -1,20 +1,20 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { getUser } from '@shared/api'
-import { setUserToken } from '@shared/services/localStorage/setUserToken'
-import type { TGEtUserResponse, TUser } from '../types/user'
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getUser } from '@shared/api';
+import { setUserToken } from '@shared/services/localStorage/setUserToken';
+import type { TGEtUserResponse, TUser } from '../types/user';
 
 export const getUserValues = createAsyncThunk<TUser, string>('user/getUser', async (token) => {
   try {
-    const response = await getUser(token)
+    const response = await getUser(token);
 
     if (response.ok) {
-      setUserToken(token)
+      setUserToken(token);
 
-      return response.result
+      return response.result;
     }
 
-    throw response.error
+    throw response.error;
   } catch (error) {
-    throw Error
+    throw Error;
   }
-})
+});

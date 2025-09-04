@@ -1,8 +1,8 @@
-import type { TUser } from './user'
+import type { TUser } from './user';
 
 export type userSchema = {
-  userValues: TUser
-  userIsLoading: boolean
-  identified: boolean
-  userModal: boolean
-}
+  userValues: TUser;
+  userIsLoading: boolean;
+  identified: boolean;
+  userModal: boolean;
+};

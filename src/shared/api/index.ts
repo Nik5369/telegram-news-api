@@ -1,3 +1,3 @@
-export { getArticlesList, postArticle } from './article'
+export { getArticlesList, postArticle } from './article';
 
-export { getUser, senNewUserInfo } from './user'
+export { getUser, senNewUserInfo } from './user';

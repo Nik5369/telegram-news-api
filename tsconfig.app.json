@@ -12,7 +12,7 @@
     "noImplicitThis": true,
     "alwaysStrict": true,
     "paths": {
-      "@/*": ["src/*"],
+      // "@/*": ["src/*"],
       "@app/*": ["src/app/*"],
       "@shared/*": ["src/shared/*"],
       "@pages/*": ["src/pages/*"],

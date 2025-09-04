@@ -1,35 +1,42 @@
-import { useState, type ChangeEvent, type ChangeEventHandler, type FormEvent, type FormHTMLAttributes } from 'react'
+import { useState, type ChangeEvent, type ChangeEventHandler, type FormEvent, type FormHTMLAttributes } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 
-import { useAppSelector } from '@shared/hooks/useAppSelector'
-import { useAppDispatch } from '@shared/hooks/useAppDispatch'
-import { MyButton, MyInput } from '@shared/ui'
-import { getUserToken } from '@shared/services/localStorage/getUserToken'
-import { convertSendedArticleText } from './services/convertSendedArticleText'
-import { createArticle } from '@entities/Articles'
+import { useAppSelector } from '@shared/hooks/useAppSelector';
+import { useAppDispatch } from '@shared/hooks/useAppDispatch';
+import { MyButton, MyInput } from '@shared/ui';
+import { getUserToken } from '@shared/services/localStorage/getUserToken';
+import { convertSendedArticleText } from './services/convertSendedArticleText';
+import { createArticle } from '@entities/Articles';
 
 export const ArticlePostForm = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const {
     userValues: { author_name },
-  } = useAppSelector((state) => state.user)
+  } = useAppSelector((state) => state.user);
 
-  const access_token = getUserToken()
+  const access_token = getUserToken();
 
   const [postArticleValues, setPostArticleValues] = useState({
     title: '',
     description: '',
-  })
+  });
 
   const postArticleValuesFunc = (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const content = convertSendedArticleText(postArticleValues.description)
+    const content = convertSendedArticleText(postArticleValues.description);
 
-    dispatch(createArticle({ title: postArticleValues.title, content, access_token, author_name }))
-  }
+    dispatch(
+      createArticle({
+        title: postArticleValues.title,
+        content,
+        access_token,
+        author_name,
+      })
+    );
+  };
 
   return (
     <div className="post-article-form">
@@ -61,5 +68,5 @@ export const ArticlePostForm = () => {
         <MyButton>Создать статью</MyButton>
       </form>
     </div>
-  )
-}
+  );
+};

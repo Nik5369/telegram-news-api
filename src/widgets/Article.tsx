@@ -1,9 +1,9 @@
-import type { TArticle } from '@/shared/types'
-import type { FC } from 'react'
+import type { TArticle } from '@entities/Articles';
+import type { FC } from 'react';
 
 type TProps = {
-  item: TArticle
-}
+  item: TArticle;
+};
 
 export const Article: FC<TProps> = ({ item }) => {
   return (
@@ -14,5 +14,5 @@ export const Article: FC<TProps> = ({ item }) => {
       </div>
       <div>{item.description}</div>
     </div>
-  )
-}
+  );
+};
