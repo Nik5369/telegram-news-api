@@ -1,8 +1,8 @@
+import { userActions } from '@entities/User/model/UserSlice';
+import { useAppSelector } from '@shared/hooks/useAppSelector';
+import type { FC, FormHTMLAttributes } from 'react';
+import { useDispatch } from 'react-redux';
 import cl from './MyForm.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { userActions } from '@/entities/User/model/UserSlice';
-import type { DetailedHTMLProps, FC, FormHTMLAttributes } from 'react';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
 type TProps = {
   active: any;

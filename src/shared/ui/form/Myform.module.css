@@ -9,6 +9,7 @@
   align-items: center;
   background: #0000005e;
   display: none;
+  z-index: 1000;
 }
 .backForFormCont.active {
   display: flex;

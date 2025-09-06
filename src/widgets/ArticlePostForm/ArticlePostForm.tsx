@@ -1,13 +1,12 @@
-import { useState, type ChangeEvent, type ChangeEventHandler, type FormEvent, type FormHTMLAttributes } from 'react';
+import { useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import { useAppSelector } from '@shared/hooks/useAppSelector';
-import { useAppDispatch } from '@shared/hooks/useAppDispatch';
-import { MyButton, MyInput } from '@shared/ui';
-import { getUserToken } from '@shared/services/localStorage/getUserToken';
-import { convertSendedArticleText } from './services/convertSendedArticleText';
 import { createArticle } from '@entities/Articles';
+import { Button, Grid } from '@mui/material';
+import { useAppDispatch } from '@shared/hooks/useAppDispatch';
+import { useAppSelector } from '@shared/hooks/useAppSelector';
+import { getUserToken } from '@shared/services/localStorage/getUserToken';
+import { Input } from '@shared/ui';
+import { convertSendedArticleText } from './services/convertSendedArticleText';
 
 export const ArticlePostForm = () => {
   const dispatch = useAppDispatch();
@@ -23,9 +22,7 @@ export const ArticlePostForm = () => {
     description: '',
   });
 
-  const postArticleValuesFunc = (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const postArticleValuesFunc = () => {
     const content = convertSendedArticleText(postArticleValues.description);
 
     dispatch(
@@ -38,12 +35,16 @@ export const ArticlePostForm = () => {
     );
   };
 
+  const sendIsDisabled = !postArticleValues.title.length || !postArticleValues.description.length;
+
   return (
-    <div className="post-article-form">
-      <form onSubmit={postArticleValuesFunc}>
-        <MyInput
+    <Grid container>
+      <Grid container gap={4} mb={2} size={15}>
+        <Input
           type="text"
           value={postArticleValues.title}
+          label="Заголовок"
+          name="title"
           onChange={(e) =>
             setPostArticleValues({
               ...postArticleValues,
@@ -53,9 +54,11 @@ export const ArticlePostForm = () => {
           placeholder="Введите название статьи"
         />
 
-        <MyInput
+        <Input
           type="text"
           value={postArticleValues.description}
+          label="Контент"
+          name="Content"
           onChange={(e) =>
             setPostArticleValues({
               ...postArticleValues,
@@ -64,9 +67,10 @@ export const ArticlePostForm = () => {
           }
           placeholder="Введите текст статьи"
         />
-
-        <MyButton>Создать статью</MyButton>
-      </form>
-    </div>
+      </Grid>
+      <Button variant="contained" disabled={sendIsDisabled} onClick={postArticleValuesFunc}>
+        Создать статью
+      </Button>
+    </Grid>
   );
 };

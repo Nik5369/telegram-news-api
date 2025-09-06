@@ -12,7 +12,7 @@
     "noImplicitThis": true,
     "alwaysStrict": true,
     "paths": {
-      // "@/*": ["src/*"],
+      // "@*": ["src/*"],
       "@app/*": ["src/app/*"],
       "@shared/*": ["src/shared/*"],
       "@pages/*": ["src/pages/*"],
@@ -21,7 +21,7 @@
       "@styles/*": ["src/styles/*"],
       "@widgets/*": ["src/widgets/*"],
       "@layouts/*": ["src/layouts/*"],
-      "@types/*": ["src/types/*"],
+      "@features/*": ["src/features/*"],
       "@api/*": ["src/api/*"],
       // "@lib/*": ["src/lib/*"],
       "@entities/*": ["src/entities/*"]

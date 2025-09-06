@@ -1,10 +1,11 @@
 import { useState, type ChangeEvent } from 'react';
 
 import { updateUserInfo, userActions } from '@entities/User';
-import { MyButton, MyForm, MyInput } from '@shared/ui';
 import { useAppDispatch, useAppSelector } from '@shared/hooks';
+import { generateLink } from '@shared/services/generateLink';
 import { getUserToken } from '@shared/services/localStorage/getUserToken';
-import { generateLink } from '@/shared/services/generateLink';
+import { Input, MyForm } from '@shared/ui';
+import { Button } from '@shared/ui/button/MyButton';
 
 export const ChangeUserInfo = () => {
   const dispatch = useAppDispatch();
@@ -31,28 +32,33 @@ export const ChangeUserInfo = () => {
     <MyForm onSubmit={handleGetNewUserInfo} canClose={true} active={userModal}>
       <p>Введиите те значения - которые, хотите поменять </p>
 
-      <MyInput
+      <Input
         type="text"
+        name="short_name"
         placeholder="short_name"
         value={newUserInfo.short_name}
         onChange={(e) => setNewUserInfo({ ...newUserInfo, short_name: e.target.value })}
       />
 
-      <MyInput
+      <Input
         type="text"
+        name="author_name"
         placeholder="author_name"
         value={newUserInfo.author_name}
         onChange={(e) => setNewUserInfo({ ...newUserInfo, author_name: e.target.value })}
       />
 
-      <MyInput
+      <Input
         type="text"
+        name="author_url"
         placeholder="author_url"
         value={newUserInfo.author_url}
         onChange={(e) => setNewUserInfo({ ...newUserInfo, author_url: e.target.value })}
       />
 
-      <MyButton>Отправить</MyButton>
+      <Button variant="contained" type="submit">
+        Отправить
+      </Button>
     </MyForm>
   );
 };

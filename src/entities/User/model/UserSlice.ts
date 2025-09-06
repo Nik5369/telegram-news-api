@@ -1,9 +1,8 @@
-import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { getUserValues } from './asyncThunks/getUsersValue';
 import { updateUserInfo } from './asyncThunks/updateUserInfo';
-import type { userSchema } from './types/userSchema';
-import { setUserToken } from '@/shared/services/localStorage/setUserToken';
 import type { TUser } from './types/user';
+import type { userSchema } from './types/userSchema';
 
 const initialState: userSchema = {
   userValues: {

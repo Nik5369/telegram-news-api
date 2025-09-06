@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getArticlesList } from '@/shared/api';
-import type { TArticle, TArticlesListWithCount } from '../types/article';
+import { getArticlesList } from '@shared/api';
+import type { TArticlesListWithCount } from '../types/article';
 
 export const getArticles = createAsyncThunk<TArticlesListWithCount, string>(
   'user/getArticles',

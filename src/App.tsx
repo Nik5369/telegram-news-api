@@ -1,12 +1,12 @@
-import { theme } from '@app/providers/theme';
 import { getArticles } from '@entities/Articles/model/asyncThunks/getArticles';
 import { getUserValues } from '@entities/User';
-import { Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
+import { MainPage } from '@pages/Main';
+import { useAppDispatch } from '@shared/hooks/useAppDispatch';
+import { useAppSelector } from '@shared/hooks/useAppSelector';
 import { getUserToken } from '@shared/services/localStorage/getUserToken';
+import { SignIn } from '@widgets/SignIn';
 import { useEffect } from 'react';
-import { MainPage } from './pages/Main';
-import { useAppDispatch } from './shared/hooks/useAppDispatch';
-import { useAppSelector } from './shared/hooks/useAppSelector';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -27,12 +27,8 @@ function App() {
 
   return (
     <Grid>
-      <Grid container justifyContent="center" py={2}>
-        <Typography variant="h1" color={theme.palette.primary.main}>
-          React Telegraph manage
-        </Typography>
-      </Grid>
-      {/* {!identified && <SignIn active={!identified} />} */}
+      {!identified && <SignIn active={!identified} />}
+      <SignIn active={!identified} />
 
       <MainPage />
     </Grid>

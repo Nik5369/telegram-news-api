@@ -1,5 +1,5 @@
-import { postArticle } from '@/shared/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { postArticle } from '@shared/api';
 import type { TArticle, TCreateArticle } from '../types/article';
 
 export const createArticle = createAsyncThunk<TArticle, TCreateArticle>('user/getNewArticle', async (allValues) => {

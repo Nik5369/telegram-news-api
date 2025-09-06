@@ -1,4 +1,4 @@
-import type { TTelegraphResponse } from '@/shared/types';
+import type { TTelegraphResponse } from '@shared/types';
 
 export type TCreateUser = {
   short_name: string;

@@ -1,34 +1,36 @@
-import { v4 as uuidv4 } from 'uuid';
-import { UserProfileString } from './UserProfileString';
-
 import { userActions } from '@entities/User/model/UserSlice';
-import { useAppSelector } from '@shared/hooks/useAppSelector';
-import { MyButton } from '@shared/ui';
-import { useAppDispatch } from '@/shared/hooks';
+import { UserInfo } from '@features/User/ui/UserInfo';
+import { Grid, useTheme } from '@mui/material';
+import { useAppDispatch } from '@shared/hooks';
+import { Button } from '@shared/ui/button/MyButton';
 
 export const UserProfile = () => {
   const dispatch = useAppDispatch();
 
-  const { userValues } = useAppSelector((state) => state.user);
+  const theme = useTheme();
 
   return (
-    <div>
-      <div className="change-user-info-btn">
-        <MyButton
-          onClick={() => {
-            dispatch(userActions.setUserModal(true));
-          }}
-        >
-          Изменить данные
-        </MyButton>
-      </div>
-      {Object.entries(userValues).map((el) => {
-        const fieldKey = el[0].split('_').join(' ');
-        const fieldValue = el[1];
-        const key = uuidv4();
+    <Grid
+      container
+      gap={4}
+      direction="column"
+      wrap="nowrap"
+      bgcolor={theme.palette.background.paper}
+      p={2}
+      size={6}
+      borderRadius={2}
+    >
+      <UserInfo />
 
-        return <UserProfileString key={key} fieldKey={fieldKey} fieldValue={fieldValue} />;
-      })}
-    </div>
+      <Button
+        variant="outlined"
+        size="large"
+        onClick={() => {
+          dispatch(userActions.setUserModal(true));
+        }}
+      >
+        Изменить данные
+      </Button>
+    </Grid>
   );
 };

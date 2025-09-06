@@ -1,22 +1,33 @@
-import { useSelector } from 'react-redux';
-import { Article } from './Article';
-import { ArticlePostForm } from './ArticlePostForm/ArticlePostForm';
+import { useAppSelector } from '@shared/hooks/useAppSelector';
+import { Loader } from '@shared/ui';
 import { v4 as uuidv4 } from 'uuid';
-import { Loader } from '@/shared/ui';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+
+import { Article } from '@features/Article/';
+import { Grid, useTheme } from '@mui/material';
+import { ArticlePostForm } from './ArticlePostForm/ArticlePostForm';
 
 export const ArticleList = () => {
   const { articles, articlesIsLoading } = useAppSelector((state) => state.articles);
+  const theme = useTheme();
 
   return (
-    <div className="article-list">
+    <Grid
+      container
+      gap={4}
+      direction="column"
+      wrap="nowrap"
+      bgcolor={theme.palette.background.paper}
+      p={2}
+      size={6}
+      borderRadius={2}
+    >
       <ArticlePostForm />
-      <div className="article-list-content">
+      <Grid container direction="column" gap={2} wrap="nowrap" overflow="auto" pr={2} pb={5}>
         {articlesIsLoading && <Loader />}
         {articles.map((el) => {
           return <Article key={uuidv4()} item={{ ...el }} />;
         })}
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };

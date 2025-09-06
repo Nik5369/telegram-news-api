@@ -1,11 +1,9 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
-import RadioGroup from '@mui/material/RadioGroup';
-import Radio from '@mui/material/Radio';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import { ThemeProvider, createTheme, useColorScheme } from '@mui/material/styles';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import { useColorScheme } from '@mui/material/styles';
 
 export const ThemeSwitcher = () => {
   const { mode, setMode } = useColorScheme();
@@ -22,12 +20,9 @@ export const ThemeSwitcher = () => {
         bgcolor: 'background.default',
         color: 'text.primary',
         borderRadius: 1,
-        p: 3,
-        minHeight: '56px',
       }}
     >
       <FormControl>
-        <FormLabel id="demo-theme-toggle">Theme</FormLabel>
         <RadioGroup
           aria-labelledby="demo-theme-toggle"
           name="theme-toggle"
@@ -35,7 +30,7 @@ export const ThemeSwitcher = () => {
           value={mode}
           onChange={(event) => setMode(event.target.value as 'system' | 'light' | 'dark')}
         >
-          <FormControlLabel value="system" control={<Radio />} label="System" />
+          {/* <FormControlLabel value="system" control={<Radio />} label="System" /> */}
           <FormControlLabel value="light" control={<Radio />} label="Light" />
           <FormControlLabel value="dark" control={<Radio />} label="Dark" />
         </RadioGroup>

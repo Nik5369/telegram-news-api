@@ -1,7 +1,7 @@
 import { CssBaseline } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import type { ReactNode } from 'react';
 import { theme } from '../config/theme';
-import { ThemeProvider } from '@mui/material/styles';
 
 export default function MUIProvider({ children }: { children: ReactNode }) {
   console.log('MUI Provider: enabled');
