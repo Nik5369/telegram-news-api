@@ -3,7 +3,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import type { ReactNode } from 'react';
 import { theme } from '../config/theme';
 
-export default function MUIProvider({ children }: { children: ReactNode }) {
+export function MUIProvider({ children }: { children: ReactNode }) {
   console.log('MUI Provider: enabled');
 
   return (

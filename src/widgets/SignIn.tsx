@@ -1,7 +1,7 @@
 import { getUserValues } from '@entities/User/model/asyncThunks/getUsersValue';
 import { useAppDispatch } from '@shared/hooks/useAppDispatch';
 import { Input, MyForm } from '@shared/ui';
-import { Button } from '@shared/ui/button/MyButton';
+import { Button } from '@shared/ui/Button/Button';
 import { useState, type ChangeEvent, type FC } from 'react';
 
 type TProps = {

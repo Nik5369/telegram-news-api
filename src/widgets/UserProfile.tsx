@@ -2,7 +2,7 @@ import { userActions } from '@entities/User/model/UserSlice';
 import { UserInfo } from '@features/User/ui/UserInfo';
 import { Grid, useTheme } from '@mui/material';
 import { useAppDispatch } from '@shared/hooks';
-import { Button } from '@shared/ui/button/MyButton';
+import { Button } from '@shared/ui/Button/Button';
 
 export const UserProfile = () => {
   const dispatch = useAppDispatch();

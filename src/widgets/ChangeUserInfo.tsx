@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '@shared/hooks';
 import { generateLink } from '@shared/services/generateLink';
 import { getUserToken } from '@shared/services/localStorage/getUserToken';
 import { Input, MyForm } from '@shared/ui';
-import { Button } from '@shared/ui/button/MyButton';
+import { Button } from '@shared/ui/Button/Button';
 
 export const ChangeUserInfo = () => {
   const dispatch = useAppDispatch();
